@@ -9,4 +9,14 @@ class Comment extends Model
         protected $guarded = [
         'id', 'created_at', 'updated_at'
     ];
+
+    // Relación de uno a muchos inversa (comments-user)
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+        // Relación de uno a muchos inversa (comments-articles)
+    public function article(){
+        return $this->belongsTo(Article::class);
+    }
 }
