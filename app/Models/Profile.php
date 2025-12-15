@@ -8,4 +8,9 @@ class Profile extends Model{
     protected $guarded = [
         'id', 'created_at', 'updated_at'
     ];
+
+    // Relación de uno a uno inversa (profile - user)
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
