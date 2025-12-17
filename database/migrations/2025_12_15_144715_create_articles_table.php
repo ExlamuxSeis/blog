@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null'); // Set null -> Es para eliminar usuarios pero no sus articulos
 
             // Relación con usuarios
-            $table->unsignedBigInteger('category_id')->unique();
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
