@@ -2,12 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Article;
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Article;
 use App\Models\Comment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +19,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Eliminar carpeta articles
+        Storage::deleteDirectory('articles');
+        Storage::deleteDirectory('categories');
+
+        // Crear carpetas donde se almacenan las imagenes
+        Storage::makeDirectory('articles');
+        Storage::makeDirectory('categories');
+
         // Llamar a seeeder
         $this->call(UserSeeder::class);
 
